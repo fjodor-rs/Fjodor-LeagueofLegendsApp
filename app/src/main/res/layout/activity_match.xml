@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_match"
+    android:orientation="vertical"
+    android:background="@color/colorLighterDark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.fjodor.fjodor_leagueoflegendsapp.MatchActivity">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:padding="10dp"
+        android:background="@color/win_row_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/details_portrait"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/stats_48px" />
+
+        <ImageView
+            android:id="@+id/details_sum1"
+            android:layout_below="@id/details_portrait"
+            android:src="@drawable/spells"
+            android:layout_marginTop="5dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <ImageView
+            android:id="@+id/details_sum2"
+            android:layout_below="@id/details_portrait"
+            android:layout_toRightOf="@+id/details_sum1"
+            android:src="@drawable/spells"
+            android:layout_marginTop="5dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <TextView
+            android:id="@+id/detail_match"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/details_portrait"
+            android:textStyle="bold"
+            android:text="RANKED SOLO 5x5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/details_level"
+            android:layout_marginBottom="5dp"
+            android:text="level 18"
+            android:layout_below="@id/detail_match"
+            android:layout_toRightOf="@id/details_portrait"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/details_gold"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/gold"
+            android:layout_below="@id/details_level"
+            android:layout_toRightOf="@id/details_portrait"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:id="@+id/tv_details_gold"
+            android:layout_alignBottom="@id/details_gold"
+            android:layout_toRightOf="@id/details_gold"
+            android:text="15K"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_details_cs"
+            android:layout_below="@+id/details_level"
+            android:layout_toRightOf="@+id/tv_details_gold"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/minion"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <TextView
+            android:id="@+id/tv_details_cs"
+            android:layout_alignBottom="@id/iv_details_cs"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_details_cs"
+            android:text="168"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_details_kda"
+            android:layout_below="@+id/details_level"
+            android:layout_toRightOf="@+id/tv_details_cs"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/score"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <TextView
+            android:id="@+id/tv_details_kda"
+            android:layout_alignBottom="@id/iv_details_kda"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_details_kda"
+            android:text="16/8/5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_details_item1"
+            android:layout_alignBottom="@+id/details_sum2"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/details_sum2"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/iv_details_item2"
+            android:layout_toRightOf="@+id/iv_details_item1"
+            android:layout_alignBottom="@+id/iv_details_item1"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <ImageView
+            android:id="@+id/iv_details_item3"
+            android:layout_toRightOf="@+id/iv_details_item2"
+            android:layout_alignBottom="@+id/iv_details_item2"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/iv_details_item4"
+            android:layout_toRightOf="@+id/iv_details_item3"
+            android:layout_alignBottom="@+id/iv_details_item3"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/iv_details_item5"
+            android:layout_toRightOf="@+id/iv_details_item4"
+            android:layout_alignBottom="@+id/iv_details_item4"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/iv_details_item6"
+            android:layout_toRightOf="@+id/iv_details_item5"
+            android:layout_alignBottom="@+id/iv_details_item5"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/iv_details_item7"
+            android:layout_toRightOf="@+id/iv_details_item6"
+            android:layout_alignBottom="@+id/iv_details_item6"
+            android:src="@drawable/items"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:id="@+id/tv_details_duration"
+            android:layout_alignParentRight="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="12:35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_details_creation"
+            android:layout_alignParentRight="true"
+            android:text="28/05/15"
+            android:layout_below="@+id/tv_details_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/winner"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:background="@color/win"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_winner1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <ImageView
+                    android:id="@+id/iv_winner2"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_winner3"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_winner4"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_winner5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="@string/loser"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:background="@color/lose"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_loser1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <ImageView
+                    android:id="@+id/iv_loser2"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_loser3"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_loser4"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_loser5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/champion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:background="@color/divider"
+                android:layout_height="2dp"/>
+
+            <TextView
+                android:id="@+id/tv_details_stats"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="Statistics"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TableLayout
+                android:id="@+id/table_details"
+                android:padding="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </TableLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

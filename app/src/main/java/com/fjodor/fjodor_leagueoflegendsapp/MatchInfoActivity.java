@@ -40,10 +40,6 @@ public class MatchInfoActivity extends AppCompatActivity {
     private ImageView portrait, sum1, sum2, item1, item2, item3, item4, item5, item6, item7, winner1, winner2, winner3, winner4, winner5, loser1, loser2, loser3, loser4, loser5;
     private TableLayout statistics;
 
-    /**
-     *
-     */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

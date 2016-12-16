@@ -68,4 +68,5 @@
     <string name="email_fmt">Email: %s</string>
     <string name="winner">Winner</string>
     <string name="loser">loser</string>
+    <string name="username">Username</string>
 </resources>

@@ -1,13 +1,22 @@
 package com.fjodor.fjodor_leagueoflegendsapp.entity;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * Stores all the data of one match in one place, and makes it easy to acquire the
+ * data with 'get' functions for all the different stats
+ */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-/**
- * Created by Fjodor on 2016/12/07.
- */
 
 public class MatchEntity implements Serializable {
 

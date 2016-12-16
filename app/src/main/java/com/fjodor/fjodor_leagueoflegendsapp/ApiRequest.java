@@ -1,5 +1,18 @@
 package com.fjodor.fjodor_leagueoflegendsapp;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * This class can be used to send API requests to the league of legends API.
+ * It obtains the JSON object of the request and then parses the information.
+ * finally, if the request was for matches, it puts the information in the MatchEntity class.
+ */
+
 import android.content.Context;
 import android.util.Log;
 
@@ -18,30 +31,31 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-/**
- * Created by Fjodor on 2016/12/06.
- */
 
 public class ApiRequest {
 
     private RequestQueue queue;
     private Context context;
-    private final static String key = "RGAPI-af358aaf-46c5-4646-9f13-c0d348ec5c2d";
-    private String region_key = "euw";
+    private final static String KEY = "RGAPI-af358aaf-46c5-4646-9f13-c0d348ec5c2d";
+    private String REGION_KEY = "euw";
 
     public ApiRequest(RequestQueue queue, Context context){
         this.queue =  queue;
         this.context = context;
     }
 
+    /**
+     * Gets the ID and summoner name using a player's name.
+     * The ID can be used to request the users match history.
+     */
+
     public void checkPlayerName(final String name, final CheckPlayerCallback callback){
 
-        String url = "https://"+region_key+".api.pvp.net/api/lol/"+region_key+"/v1.4/summoner/by-name/"+name+"?api_key="+key;
+        String url = "https://"+REGION_KEY+".api.pvp.net/api/lol/"+REGION_KEY+"/v1.4/summoner/by-name/"+name+"?api_key="+KEY;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
@@ -82,6 +96,11 @@ public class ApiRequest {
         void dontExist(String message);
         void onError(String message);
     }
+
+    /**
+     * Is used to retrieve the static data from the JSON files in assets to be used in the
+     * getChampionName and getSummonerName function.
+     */
 
     public String getJsonFile(Context context, String filename){
 
@@ -141,21 +160,24 @@ public class ApiRequest {
         return summonerName;
     }
 
+    /**
+     * Uses a player's ID to find his match history, take one match at a time,
+     * parses all the information about that one match and puts it into a MatchEntity.
+     */
+
     public void getHistoryMatches(long id, final HistoryCallback callback){
 
-        String url = "https://"+region_key+".api.pvp.net/api/lol/"+region_key+"/v1.3/game/by-summoner/"+id+"/recent?api_key="+key;
+        String url = "https://"+REGION_KEY+".api.pvp.net/api/lol/"+REGION_KEY+"/v1.3/game/by-summoner/"+id+"/recent?api_key="+KEY;
 
         JsonObjectRequest request = new JsonObjectRequest (Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
 
                 List<Integer> teamWinners = new ArrayList<>();
                 List<Integer> teamLosers = new ArrayList<>();
                 Integer[] items = new Integer[7];
                 LinkedHashMap<String, Integer> statistics = new LinkedHashMap<>();
                 List<MatchEntity> historyMatches = new ArrayList<>();
-
 
                 if(response.length() > 0){
 
@@ -319,9 +341,18 @@ public class ApiRequest {
         void onSucces(List<MatchEntity> matches);
         void noMatch(String message);
         void onError(String message);
+    }
+
+    public void getPlayerStats(long id, PlayerCallback callback){
 
     }
 
+
+    public interface PlayerCallback{
+        void onSucces();
+        void noPlayer(String message);
+        void onError(String message);
+    }
 
 
 }

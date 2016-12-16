@@ -12,15 +12,26 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.fjodor.fjodor_leagueoflegendsapp.adapter.MyAdapter;
 import com.fjodor.fjodor_leagueoflegendsapp.entity.MatchEntity;
 
-import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * In this activity you can view your own, or a player you searched for's match history.
+ * You can click on a match to get the match details, you can use the NavigationView
+ * to orientate yourself in the application.
+ */
 
 public class PlayerInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -58,9 +69,6 @@ public class PlayerInfoActivity extends AppCompatActivity implements NavigationV
             playerId = extras.getLong("ID");
             setTitle(playerName);
         }
-        else{
-            //redirect to MainActivity
-        }
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -82,10 +90,13 @@ public class PlayerInfoActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-
         recycleView = (RecyclerView) findViewById(R.id.recycle_view);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
         recycleView.setHasFixedSize(true);
+
+        /**
+         * get the match history using the playerID of the user or the player searched for.
+         */
 
         request.getHistoryMatches(playerId, new ApiRequest.HistoryCallback() {
             @Override
@@ -106,6 +117,11 @@ public class PlayerInfoActivity extends AppCompatActivity implements NavigationV
         });
     }
 
+    /**
+     * Makes the menu options in the NavigationView clickable, and implements what
+     * happens when they are clicked.
+     */
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
@@ -121,11 +137,13 @@ public class PlayerInfoActivity extends AppCompatActivity implements NavigationV
 
         switch (item.getItemId()){
             case R.id.main_menu:
-                Toast.makeText(getApplicationContext(), "Main Menu", Toast.LENGTH_SHORT).show();
+                Intent main_intent = new Intent(getApplicationContext(), EmailPasswordActivity.class);
+                startActivity(main_intent);
+                finish();
                 return true;
             case R.id.search:
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                Intent search_intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(search_intent);
                 finish();
                 return true;
             case R.id.stats :

@@ -1,5 +1,18 @@
 package com.fjodor.fjodor_leagueoflegendsapp;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * In this activity you can look for other player's match history, it remembers the last player
+ * you looked for.
+ */
+
+
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +27,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
 import com.fjodor.fjodor_leagueoflegendsapp.entity.MatchEntity;
 import com.fjodor.fjodor_leagueoflegendsapp.helper.Helper;
 import com.squareup.picasso.Picasso;
@@ -129,8 +141,9 @@ public class MatchActivity extends AppCompatActivity {
                 row.addView(tv_value);
 
                 LinearLayout.LayoutParams key_params = (LinearLayout.LayoutParams) tv_key.getLayoutParams();
-                key_params.width = 0;
+                key_params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
                 key_params.height = 1;
+                key_params.rightMargin = 600;
                 key_params.height = (int)(20*density);
                 tv_key.setLayoutParams(key_params);
 

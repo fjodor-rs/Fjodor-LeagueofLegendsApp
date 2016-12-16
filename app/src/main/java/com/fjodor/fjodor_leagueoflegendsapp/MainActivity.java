@@ -1,5 +1,17 @@
 package com.fjodor.fjodor_leagueoflegendsapp;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * In this activity you can look for other player's match history, it remembers the last player
+ * you looked for.
+ */
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -8,7 +20,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,14 +27,6 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 
 public class MainActivity extends AppCompatActivity {
-
-
-
-
-//    Log in met een account en koppel die aan je username van je league account
-//    Dit haalt je stats op, hierna kun je zoeken op de stats van andere mensen
-//    dit zet ze naast elkaar waarna je duidelijk kunt zien waar je beter of slechter in bent
-
 
     private EditText nameEdit;
     private Button btnSearch;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         sharedPreferences = this.getSharedPreferences("lolPrefs", 0);
         spEditor = sharedPreferences.edit();
@@ -94,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,8 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     }, 2000);
-                }
-                else{
+                }else{
                     Toast.makeText(getApplicationContext(), "Fill in the name of a player", Toast.LENGTH_SHORT).show();
                 }
             }

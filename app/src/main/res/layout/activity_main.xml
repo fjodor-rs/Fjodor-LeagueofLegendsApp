@@ -24,8 +24,8 @@
             android:layout_width="230dp"
             android:maxLines="1"
             android:hint="@string/player_name"
-            android:textColor="#FF6600"
-            android:textColorHint="#FF6600"
+            android:textColor="@color/orange_smooth"
+            android:textColorHint="@color/orange_smooth"
             android:layout_height="wrap_content"/>
 
         <ProgressBar

@@ -1,5 +1,16 @@
 package com.fjodor.fjodor_leagueoflegendsapp.helper;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * Used to help display images, time and date of matches in different parts of the app.
+ */
+
 import android.content.Context;
 import android.widget.ImageView;
 
@@ -12,11 +23,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Created by Fjodor on 2016/12/07.
- */
 
 public class Helper {
+
+    /**
+     * Uses league's URL for item images, inserting the name of the item and then displaying it
+     * in the give ImageView.
+     */
 
     public static void setImageItems(Context context, int item, ImageView image){
 
@@ -31,6 +44,10 @@ public class Helper {
 
     }
 
+    /**
+     * Converts the date of a match to a readable format.
+     */
+
     public static String convertDate(long creation) {
 
         Date date = new Date(creation);
@@ -39,6 +56,10 @@ public class Helper {
         String formattedDate = sdf.format(date);
         return formattedDate;
     }
+
+    /**
+     * Converts the duration of the match to a readable format.
+     */
 
     public static String convertDuration(long duration) {
 

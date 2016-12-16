@@ -1,5 +1,16 @@
 package com.fjodor.fjodor_leagueoflegendsapp;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * MySingleton makes sure you can only use a single RequestQueue to send requests to the internet.
+ */
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;

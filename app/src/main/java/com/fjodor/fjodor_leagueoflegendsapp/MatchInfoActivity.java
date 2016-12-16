@@ -12,7 +12,6 @@ package com.fjodor.fjodor_leagueoflegendsapp;
  * you looked for.
  */
 
-
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -34,14 +33,16 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class MatchActivity extends AppCompatActivity {
+public class MatchInfoActivity extends AppCompatActivity {
 
     private RelativeLayout relativeLayout;
     private TextView typeMatch, level, gold, cs, kda, duration, creation;
     private ImageView portrait, sum1, sum2, item1, item2, item3, item4, item5, item6, item7, winner1, winner2, winner3, winner4, winner5, loser1, loser2, loser3, loser4, loser5;
     private TableLayout statistics;
-    private RequestQueue queue;
-    private ApiRequest request;
+
+    /**
+     *
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +56,8 @@ public class MatchActivity extends AppCompatActivity {
 
             MatchEntity oneMatch = (MatchEntity) intent.getSerializableExtra("ONE_MATCH");
 
-            queue = MySingleton.getInstance(this).getRequestQueue();
-            request = new ApiRequest(queue, this);
+            RequestQueue queue = MySingleton.getInstance(this).getRequestQueue();
+            ApiRequest request = new ApiRequest(queue, this);
 
             if(oneMatch.isWinner()){
                 int color_win = ContextCompat.getColor(this, R.color.win_row_bg);
@@ -91,7 +92,8 @@ public class MatchActivity extends AppCompatActivity {
             Helper.setImageItems(this, oneMatch.getItems()[6], item7);
 
             typeMatch.setText(oneMatch.getTypeMatch());
-            level.setText("Level " + String.valueOf(oneMatch.getChamplevel()));
+            String champLevel = "Level " + String.valueOf(oneMatch.getChamplevel());
+            level.setText(champLevel);
             String money = String.valueOf(Math.round(oneMatch.getGold()/1000.0))+"K";
             gold.setText(money);
             cs.setText(String.valueOf(oneMatch.getCs()));
@@ -107,21 +109,18 @@ public class MatchActivity extends AppCompatActivity {
             Helper.setImagePortrait(this, oneMatch.getTeamWinner().get(2), winner3, request);
             Helper.setImagePortrait(this, oneMatch.getTeamWinner().get(3), winner4, request);
 
-
-            if(oneMatch.getChampId() == oneMatch.getTeamWinner().get(4) && oneMatch.isWinner() == true){
+            if(oneMatch.getChampId() == oneMatch.getTeamWinner().get(4) && oneMatch.isWinner()){
                 winner5.getLayoutParams().height = size;
                 winner5.getLayoutParams().width = size;
             }
             Helper.setImagePortrait(this, oneMatch.getTeamWinner().get(4), winner5, request);
-
 
             Helper.setImagePortrait(this, oneMatch.getTeamLoser().get(0), loser1, request);
             Helper.setImagePortrait(this, oneMatch.getTeamLoser().get(1), loser2, request);
             Helper.setImagePortrait(this, oneMatch.getTeamLoser().get(2), loser3, request);
             Helper.setImagePortrait(this, oneMatch.getTeamLoser().get(3), loser4, request);
 
-
-            if(oneMatch.getChampId() == oneMatch.getTeamLoser().get(4) && oneMatch.isWinner() == false){
+            if(oneMatch.getChampId() == oneMatch.getTeamLoser().get(4) && !oneMatch.isWinner()){
                 loser5.getLayoutParams().height = size;
                 loser5.getLayoutParams().width = size;
             }
@@ -148,7 +147,7 @@ public class MatchActivity extends AppCompatActivity {
                 tv_key.setLayoutParams(key_params);
 
                 LinearLayout.LayoutParams value_params = (LinearLayout.LayoutParams) tv_value.getLayoutParams();
-                value_params.gravity = Gravity.RIGHT;
+                value_params.gravity = Gravity.END;
                 value_params.height = (int)(20*density);
                 tv_value.setLayoutParams(value_params);
 
@@ -159,6 +158,10 @@ public class MatchActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * Initializes all the views for the activity.
+     */
 
     public void initialize(){
 
@@ -191,8 +194,5 @@ public class MatchActivity extends AppCompatActivity {
         loser4 = (ImageView) findViewById(R.id.iv_loser4);
         loser5 = (ImageView) findViewById(R.id.iv_loser5);
         statistics = (TableLayout) findViewById(R.id.table_details);
-
-
     }
-
 }

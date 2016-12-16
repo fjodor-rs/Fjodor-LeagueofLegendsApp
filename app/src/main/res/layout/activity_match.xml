@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.fjodor.fjodor_leagueoflegendsapp.MatchActivity">
+    tools:context="com.fjodor.fjodor_leagueoflegendsapp.MatchInfoActivity">
 
     <RelativeLayout
         android:id="@+id/relative_layout"
@@ -15,7 +15,6 @@
         android:background="@color/win_row_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <ImageView
             android:id="@+id/details_portrait"
@@ -85,6 +84,7 @@
             android:src="@drawable/minion"
             android:layout_width="25dp"
             android:layout_height="25dp" />
+
         <TextView
             android:id="@+id/tv_details_cs"
             android:layout_alignBottom="@id/iv_details_cs"
@@ -93,6 +93,7 @@
             android:text="168"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
         <ImageView
             android:id="@+id/iv_details_kda"
             android:layout_below="@+id/details_level"
@@ -101,6 +102,7 @@
             android:src="@drawable/score"
             android:layout_width="25dp"
             android:layout_height="25dp" />
+
         <TextView
             android:id="@+id/tv_details_kda"
             android:layout_alignBottom="@id/iv_details_kda"
@@ -118,6 +120,7 @@
             android:src="@drawable/items"
             android:layout_width="35dp"
             android:layout_height="35dp" />
+
         <ImageView
             android:id="@+id/iv_details_item2"
             android:layout_toRightOf="@+id/iv_details_item1"
@@ -258,7 +261,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-
             <LinearLayout
                 android:background="@color/lose"
                 android:paddingTop="10dp"
@@ -332,12 +334,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
             </TableLayout>
+
         </LinearLayout>
 
-
     </ScrollView>
-
 
 </LinearLayout>

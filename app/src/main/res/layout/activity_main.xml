@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context="com.fjodor.fjodor_leagueoflegendsapp.MainActivity">
+    tools:context="com.fjodor.fjodor_leagueoflegendsapp.SearchActivity">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -50,9 +50,9 @@
         android:id="@+id/recent"
         android:layout_width="120dp"
         android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="Test"
         android:textSize="20sp"/>
 
 </LinearLayout>

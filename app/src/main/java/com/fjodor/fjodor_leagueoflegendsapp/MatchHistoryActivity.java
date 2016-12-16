@@ -33,26 +33,20 @@ import java.util.List;
  * to orientate yourself in the application.
  */
 
-public class PlayerInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MatchHistoryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private String playerName;
     private Long playerId;
-    private Toolbar toolbar;
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
     private RecyclerView recycleView;
     private MyAdapter adapter;
-    private ApiRequest request;
-    private RequestQueue queue;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
 
-        queue = MySingleton.getInstance(this).getRequestQueue();
-        request = new ApiRequest(queue, this);
+        RequestQueue queue = MySingleton.getInstance(this).getRequestQueue();
+        ApiRequest request = new ApiRequest(queue, this);
 
         String json = request.getJsonFile(this, "champion.json");
         Log.d("APP", json);
@@ -60,18 +54,18 @@ public class PlayerInfoActivity extends AppCompatActivity implements NavigationV
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         if(extras.getString("NAME") != null && extras.getLong("ID") > 0){
 
-            playerName = extras.getString("NAME");
+            String playerName = extras.getString("NAME");
             playerId = extras.getLong("ID");
             setTitle(playerName);
         }
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setItemIconTintList(null);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close){
 
@@ -142,7 +136,7 @@ public class PlayerInfoActivity extends AppCompatActivity implements NavigationV
                 finish();
                 return true;
             case R.id.search:
-                Intent search_intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent search_intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(search_intent);
                 finish();
                 return true;

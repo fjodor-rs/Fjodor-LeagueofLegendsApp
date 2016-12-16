@@ -11,13 +11,11 @@
     card_view:cardCornerRadius="2dp"
     android:orientation="vertical">
 
-
     <RelativeLayout
         android:id="@+id/rl_main"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
-
 
         <View
             android:id="@+id/win_or_lose"

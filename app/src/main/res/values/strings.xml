@@ -69,4 +69,5 @@
     <string name="winner">Winner</string>
     <string name="loser">loser</string>
     <string name="username">Username</string>
+    <string name="summoner_name">Summoner Name</string>
 </resources>

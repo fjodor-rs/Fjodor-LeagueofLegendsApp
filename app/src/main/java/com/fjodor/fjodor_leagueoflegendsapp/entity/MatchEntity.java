@@ -4,7 +4,7 @@ package com.fjodor.fjodor_leagueoflegendsapp.entity;
  * Fjodor van Rijsselberg
  * Student number: 11409231
  *
- * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ * This class was made with help of the "[Android] Tuto Application League Of Legends" guide:
  *
  *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
  *
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-
 public class MatchEntity implements Serializable {
 
     private boolean winner;
@@ -28,7 +27,6 @@ public class MatchEntity implements Serializable {
     private String sum1, sum2, champName, typeMatch;
     private List<Integer> teamWinner = new ArrayList<>();
     private List<Integer> teamLoser = new ArrayList<>();
-
 
     public MatchEntity(boolean winner, long matchId, long matchCreation, long matchDuration, int champId, int kills, int gold, int deaths, int assists, int champlevel, int cs, Integer[] items, LinkedHashMap<String, Integer> stats, String sum1, String sum2, String champName, String typeMatch, List<Integer> teamWinner, List<Integer> teamLoser) {
         this.winner = winner;

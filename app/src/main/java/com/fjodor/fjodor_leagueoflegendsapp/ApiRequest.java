@@ -4,7 +4,7 @@ package com.fjodor.fjodor_leagueoflegendsapp;
  * Fjodor van Rijsselberg
  * Student number: 11409231
  *
- * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ * This class was made with help of the "[Android] Tuto Application League Of Legends" guide:
  *
  *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
  *
@@ -34,7 +34,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-
 
 public class ApiRequest {
 
@@ -137,9 +136,7 @@ public class ApiRequest {
             JSONObject image = champInfo.getJSONObject("image");
             champName = image.getString("full");
         }
-
         return champName;
-
     }
 
     public String getSummonerName(int spellId) throws JSONException{
@@ -221,7 +218,6 @@ public class ApiRequest {
                                     }
                                 }
                             }
-
                             if(win){
                                 teamWinners.add(champId);
                             }
@@ -305,22 +301,17 @@ public class ApiRequest {
                             teamLosers = new ArrayList<>();
                             statistics = new LinkedHashMap<>();
                         }
-
                         callback.onSucces(historyMatches);
-
 
                     } catch (JSONException e) {
                          Log.d("APP", "EXCEPTION HISTORY = " + e);
                         e.printStackTrace();
                     }
-
-
                 }
 
                 else{
                     callback.noMatch("No Match");
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -329,12 +320,9 @@ public class ApiRequest {
                 if(error instanceof NetworkError) {
                     callback.onError("Cannot connect to network");
                 }
-
             }
         });
-
         queue.add(request);
-
     }
 
     public interface HistoryCallback{
@@ -342,17 +330,5 @@ public class ApiRequest {
         void noMatch(String message);
         void onError(String message);
     }
-
-    public void getPlayerStats(long id, PlayerCallback callback){
-
-    }
-
-
-    public interface PlayerCallback{
-        void onSucces();
-        void noPlayer(String message);
-        void onError(String message);
-    }
-
 
 }

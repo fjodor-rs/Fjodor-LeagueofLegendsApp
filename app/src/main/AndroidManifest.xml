@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayerInfoActivity" />
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".MatchActivity"></activity>
+        <activity android:name=".MatchHistoryActivity" />
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".MatchInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -26,16 +26,12 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 
-public class MainActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
     private EditText nameEdit;
-    private Button btnSearch;
     private ProgressBar pbSearch;
-    private TextView recent;
-    private RequestQueue queue;
     private ApiRequest request;
     private Handler handler;
-    private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor spEditor;
     private String recentSearch;
 
@@ -44,20 +40,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        sharedPreferences = this.getSharedPreferences("lolPrefs", 0);
+        SharedPreferences sharedPreferences = this.getSharedPreferences("lolPrefs", 0);
         spEditor = sharedPreferences.edit();
 
         recentSearch = sharedPreferences.getString("RECENT", null);
 
-        queue = MySingleton.getInstance(this).getRequestQueue();
+        RequestQueue queue = MySingleton.getInstance(this).getRequestQueue();
         request = new ApiRequest(queue, this);
         handler = new Handler();
 
         nameEdit = (EditText) findViewById(R.id.name_edit);
-        btnSearch = (Button) findViewById(R.id.btn_search);
+        Button btnSearch = (Button) findViewById(R.id.btn_search);
         pbSearch = (ProgressBar) findViewById(R.id.pb_search);
-        recent = (TextView) findViewById(R.id.recent);
+        TextView recent = (TextView) findViewById(R.id.recent);
 
         if(recentSearch != null){
             recent.setText(recentSearch);
@@ -74,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(String name, long id) {
                                     pbSearch.setVisibility(View.INVISIBLE);
-                                    Intent intent = new Intent(getApplicationContext(), PlayerInfoActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), MatchHistoryActivity.class);
                                     Bundle extras = new Bundle();
                                     extras.putString("NAME", name);
                                     extras.putLong("ID", id);
@@ -114,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(String name, long id) {
                                     pbSearch.setVisibility(View.INVISIBLE);
-                                    Intent intent = new Intent(getApplicationContext(), PlayerInfoActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), MatchHistoryActivity.class);
                                     Bundle extras = new Bundle();
                                     extras.putString("NAME", name);
                                     extras.putLong("ID", id);

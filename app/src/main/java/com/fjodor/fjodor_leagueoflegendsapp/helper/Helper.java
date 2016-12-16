@@ -4,7 +4,7 @@ package com.fjodor.fjodor_leagueoflegendsapp.helper;
  * Fjodor van Rijsselberg
  * Student number: 11409231
  *
- * This activity was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ * This class was made with help of the "[Android] Tuto Application League Of Legends" guide:
  *
  *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
  *
@@ -15,6 +15,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.fjodor.fjodor_leagueoflegendsapp.ApiRequest;
+import com.fjodor.fjodor_leagueoflegendsapp.R;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -22,7 +23,6 @@ import org.json.JSONException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
-
 
 public class Helper {
 
@@ -35,13 +35,12 @@ public class Helper {
 
         if(item != 0){
 
-            Picasso.with(context).load("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+item+".png").error(android.support.design.R.drawable.abc_ic_star_black_16dp).into(image);
+            Picasso.with(context).load("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+item+".png").error(R.drawable.empty).into(image);
 
         }
         else{
-            Picasso.with(context).load(android.support.design.R.drawable.abc_ic_star_black_16dp).into(image);
+            Picasso.with(context).load(R.drawable.empty).into(image);
         }
-
     }
 
     /**
@@ -53,8 +52,7 @@ public class Helper {
         Date date = new Date(creation);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT+1"));
-        String formattedDate = sdf.format(date);
-        return formattedDate;
+        return sdf.format(date);
     }
 
     /**
@@ -67,13 +65,12 @@ public class Helper {
         String formattedDuration;
 
         if (total < 60) {
-            double minute = total;
-            int minuteInt = (int) minute;
+            int minuteInt = (int) total;
             String finalMinute = String.valueOf(minuteInt);
             if (minuteInt < 10) {
                 finalMinute = "0" + minuteInt;
             }
-            double second = minute - Math.floor(minute);
+            double second = total - Math.floor(total);
             second = Math.round(second * 60f);
             int secondInt = (int) second;
             String finalSecond = String.valueOf(secondInt);
@@ -113,8 +110,5 @@ public class Helper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

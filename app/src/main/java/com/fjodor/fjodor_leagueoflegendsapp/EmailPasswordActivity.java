@@ -62,7 +62,6 @@ public class EmailPasswordActivity extends BaseActivity implements
         mPasswordField = (EditText) findViewById(R.id.field_password);
         mUsernameField = (EditText) findViewById(R.id.field_username);
 
-
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -70,10 +69,10 @@ public class EmailPasswordActivity extends BaseActivity implements
 
         mAuth = FirebaseAuth.getInstance();
 
-
         /**
          * Checks if the users is logged in or logged out
          */
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -99,7 +98,6 @@ public class EmailPasswordActivity extends BaseActivity implements
         super.onStop();
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
-
         }
     }
 
@@ -121,7 +119,6 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Toast.makeText(EmailPasswordActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
-
                         hideProgressDialog();
                     }
                 });
@@ -136,22 +133,22 @@ public class EmailPasswordActivity extends BaseActivity implements
         showProgressDialog();
 
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        if (!task.isSuccessful()) {
-                            mStatusTextView.setText(R.string.auth_failed);
-                        }
-                        hideProgressDialog();
-                    }
-                });
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "signInWithEmail:failed", task.getException());
+                    Toast.makeText(EmailPasswordActivity.this, R.string.auth_failed,
+                            Toast.LENGTH_SHORT).show();
+                }
+                if (!task.isSuccessful()) {
+                    mStatusTextView.setText(R.string.auth_failed);
+                }
+                hideProgressDialog();
+            }
+        });
     }
 
     private void signOut() {
@@ -169,7 +166,6 @@ public class EmailPasswordActivity extends BaseActivity implements
         } else {
             mEmailField.setError(null);
         }
-
         String password = mPasswordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
             mPasswordField.setError("Required.");
@@ -177,7 +173,6 @@ public class EmailPasswordActivity extends BaseActivity implements
         } else {
             mPasswordField.setError(null);
         }
-
         return valid;
     }
 
@@ -195,7 +190,6 @@ public class EmailPasswordActivity extends BaseActivity implements
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
             findViewById(R.id.main_btn).setVisibility(View.VISIBLE);
             findViewById(R.id.field_username).setVisibility(View.VISIBLE);
-
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
@@ -207,10 +201,9 @@ public class EmailPasswordActivity extends BaseActivity implements
         }
     }
 
-
     /**
      * Handles what happens when one of the buttons in the activity get pressed.
-     * The main_btn searches for the user's match history and then opens the PlayerInfoActivity.
+     * The main_btn searches for the user's match history and then opens the MatchHistoryActivity.
      */
 
     @Override
@@ -236,35 +229,27 @@ public class EmailPasswordActivity extends BaseActivity implements
                 mRequest.checkPlayerName(name, new ApiRequest.CheckPlayerCallback() {
                     @Override
                     public void onSuccess(String name, long id) {
-
-                        Intent intent = new Intent(getApplicationContext(), PlayerInfoActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MatchHistoryActivity.class);
                         Bundle extras = new Bundle();
                         extras.putString("NAME", name);
                         extras.putLong("ID", id);
                         intent.putExtras(extras);
-
-
                         startActivity(intent);
                     }
 
                     @Override
                     public void dontExist(String message) {
-
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(String message) {
-
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                     }
                 });
-
             } else {
                 Toast.makeText(getApplicationContext(), "Fill in your Summoner Name", Toast.LENGTH_SHORT).show();
-
             }
         }
     }
-
 }

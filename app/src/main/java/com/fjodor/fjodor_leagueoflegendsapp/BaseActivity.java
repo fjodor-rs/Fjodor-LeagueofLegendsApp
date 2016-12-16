@@ -27,9 +27,7 @@ import android.widget.Toast;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar toolbar;
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
 
     @VisibleForTesting
     public ProgressDialog mProgressDialog;
@@ -60,11 +58,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setItemIconTintList(null);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close){
 
@@ -82,10 +80,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener (toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
     }
 
     /**
@@ -98,7 +92,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         if(item.isChecked()){
             item.setChecked(false);
-
         }
         else{
             item.setChecked(true);
@@ -113,7 +106,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 return true;
             case R.id.search:
-                Intent search_intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent search_intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(search_intent);
                 finish();
                 return true;

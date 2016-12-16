@@ -1,5 +1,16 @@
 package com.fjodor.fjodor_leagueoflegendsapp.adapter;
 
+/**
+ * Fjodor van Rijsselberg
+ * Student number: 11409231
+ *
+ * This class was made with help of the "[Android] Tuto Application League Of Legends" guide:
+ *
+ *      https://www.youtube.com/watch?v=W_WVYiY-uII&list=PLEubh3Rmu4tlbFDyhgO943Ewp4GPIjYqW
+ *
+ * MyAdapter fills the RecycleView in MatchHistoryActivity with matches.
+ */
+
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
@@ -13,17 +24,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fjodor.fjodor_leagueoflegendsapp.MatchActivity;
+import com.fjodor.fjodor_leagueoflegendsapp.MatchInfoActivity;
 import com.fjodor.fjodor_leagueoflegendsapp.R;
 import com.fjodor.fjodor_leagueoflegendsapp.entity.MatchEntity;
 import com.fjodor.fjodor_leagueoflegendsapp.helper.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-/**
- * Created by Fjodor on 2016/12/07.
- */
 
 public class MyAdapter extends RecyclerView.Adapter {
 
@@ -42,6 +49,10 @@ public class MyAdapter extends RecyclerView.Adapter {
 
         return new MyViewHolder(itemView);
     }
+
+    /**
+     *
+     */
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -84,19 +95,21 @@ public class MyAdapter extends RecyclerView.Adapter {
         ((MyViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MatchActivity.class);
+                Intent intent = new Intent(context, MatchInfoActivity.class);
                 intent.putExtra("ONE_MATCH", oneMatch);
                 view.getContext().startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return matches.size();
     }
+
+    /**
+     * Creates a fade in where you clicked on one of the matches.
+     */
 
     private void setAnimation(View toAnimate){
 
@@ -111,8 +124,6 @@ public class MyAdapter extends RecyclerView.Adapter {
         ImageView portrait, item1, item2, item3, item4, item5, item6, item7;
         TextView typeMatch, kda, gold, cs, matchDuration, matchCreation;
         CardView cardView;
-
-
 
         public MyViewHolder(View itemView) {
             super(itemView);
